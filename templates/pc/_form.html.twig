@@ -1,0 +1,23 @@
+{{ form_start(form) }}
+<div>
+    <label for="NumC" class="form-label">
+        {{ form_label(form.NumC)}}
+    </label>
+    {{ form_widget(form.NumC, {'attr':{'class':'form-select mb-4'}} )}}
+</div>
+<div>
+    <label for="CodP" class="form-label">
+        {{ form_label(form.CodP)}}
+    </label>
+    {{ form_widget(form.CodP, {'attr':{'class':'form-select mb-4'}} )}}
+</div>
+
+<div>
+    <label for="quantite" class="form-label">
+        {{ form_label(form.QteC)}}
+    </label>
+    {{ form_widget(form.QteC, {'attr':{'class':'form-control mb-4'}} )}}
+</div>
+    {{ form_widget(form) }}
+    <button class="btn btn-dark" >{{ button_label|default('Save') }}</button>
+{{ form_end(form) }}

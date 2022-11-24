@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>
+			{% block title %}Welcome!
+			{% endblock %}
+		</title>
+		<link
+		rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>">
+		{# Run `composer require symfony/webpack-encore-bundle` to start using
+																																																												Symfony UX #}
+		{% block stylesheets %}
+			{{ encore_entry_link_tags('app') }}
+			<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+		{% endblock %}
+		{% block javascripts %}
+			{{ encore_entry_script_tags('app') }}
+			<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+		{% endblock %}
+	</head>
+	<body>
+		<nav class="navbar navbar-expand-lg bg-light">
+			<div class="container-fluid">
+				<a class="navbar-brand" href="#">Entreprise</a>
+				<button class="navbar-toggler" type="button" data-bs-toggle="collapse" databs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" ariaexpanded="false" aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+				<div class="collapse navbar-collapse" id="navbarSupportedContent">
+					<ul class="navbar-nav me-auto mb-2 mb-lg-0">
+
+
+						<li class="nav-item">
+							<a class="nav-link" href="{{ path('app_produit_index') }}">Produit</a>
+						</li>
+
+						<li class="nav-item">
+							<a class="nav-link" href="{{ path('app_client_index') }}">Client</a>
+						</li>
+
+						<li class="nav-item">
+							<a class="nav-link" href="{{ path('app_commande_index') }}">Commande</a>
+						</li>
+
+						<li class="nav-item">
+							<a class="nav-link" href="{{ path('app_p_c_index') }}">Produit-Commande</a>
+						</li>
+
+						<li class="nav-item">
+							<a class="nav-link" href="{{ path('app_facture_index') }}">Facture</a>
+						</li>
+
+						<li class="nav-item">
+							<a class="nav-link" href="{{ path('question1') }}">Question 1</a>
+						</li>
+
+						<li class="nav-item">
+							<a class="nav-link" href="{{ path('question2') }}">Question 2</a>
+						</li>
+
+						<li class="nav-item">
+							<a class="nav-link" href="{{ path('question3') }}">Question 3</a>
+						</li>
+
+						<li class="nav-item">
+							<a class="nav-link" href="{{ path('question4') }}">Question 4</a>
+						</li>
+
+
+					</ul>
+
+				</div>
+			</div>
+		</nav>
+		<div class="container"> {% block body %}{% endblock %}
+			</div>
+
+		</body>
+	</html>

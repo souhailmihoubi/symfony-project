@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Cherche Clients par Produit{% endblock %}
+{% block body %}
+    <h1> Liste des clients qui ont passé des commandes contenant un produit donné</h1>
+    {{form_start(form)}}
+    <div class="d-flex flex-row justify-content-center align-items-left">
+    <div class="col">
+    {{form_row(form.produit)}}
+    </div>
+    <div class="col">
+        <div class="form-group">
+            <button type="submit" class="btn btn-warning">Cherche</button>
+        </div>
+    </div>
+    </div>
+    {{form_end(form)}}    
+  {#   {% if clients %}
+        <table id="client" class="table table-stripped">
+            <thead>
+                <tr>
+                    <th>Nom de Client</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for borrowing in borrowings %}
+                    <tr>
+                        <td>{{client.nom}}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p>N'pas des clients</p>
+    {% endif %} #}
+{% endblock %}

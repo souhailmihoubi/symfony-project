@@ -1,0 +1,23 @@
+{{ form_start(form) }}
+<div>
+    <label for="nomC" class="form-label">
+        {{ form_label(form.NomC)}}
+    </label>
+    {{ form_widget(form.NomC, {'attr':{'class':'form-control mb-4'}} )}}
+</div>
+<div>
+    <label for="CreditC"     class="form-label">
+        {{ form_label(form.CreditC)}}
+    </label>
+    {{ form_widget(form.CreditC, {'attr':{'class':'form-control mb-4'}} )}}
+</div>
+<div>
+    <label for="AdrC" class="form-label">
+        {{ form_label(form.AdrC)}}
+    </label>
+    {{ form_widget(form.AdrC, {'attr':{'class':'form-control mb-4'}} )}}
+</div>
+
+    {{ form_widget(form) }}
+    <button class="btn btn-dark">{{ button_label|default('Save') }}</button>
+{{ form_end(form) }}

@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}PC{% endblock %}
+
+{% block body %}
+    <h1>PC</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ p_c.id }}</td>
+            </tr>
+            <tr>
+                <th>QteC</th>
+                <td>{{ p_c.QteC }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_p_c_index') }}">back to list</a>
+
+    <a href="{{ path('app_p_c_edit', {'id': p_c.id}) }}">edit</a>
+
+    {{ include('pc/_delete_form.html.twig') }}
+{% endblock %}

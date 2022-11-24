@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Question 1 {% endblock %}
+
+{% block body %}
+    <h1>clients qui ont passé des commandes contenant un produit</h1>
+
+    {{form_start(form)}}
+    <div class="d-flex flex-row justify-content-center align-items-left">
+    <div class="col">
+    {{form_row(form.produit)}}
+    </div>
+    <div class="col">
+        <div class="form-group">
+            <button type="submit" class="btn btn-warning">Search</button>
+        </div>
+    </div>
+    </div>
+    {{form_end(form)}}    
+    {% if clients %}
+        <table id="client" class="table table-stripped">
+            <thead>
+                <tr>
+                    <th>Nom de Client</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for client in clients %}
+                    <tr>
+                        <td>{{client.nom_c}}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <a href="{{path('app_client_index')}}" class="btn btn-secondary">Back to list</a>
+    {% else %}
+        <p>N'as pas de Client</p>
+    {% endif %}
+{% endblock %}

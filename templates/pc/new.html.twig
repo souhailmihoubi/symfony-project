@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New PC{% endblock %}
+
+{% block body %}
+    <h1>Create new PC</h1>
+
+    {{ include('pc/_form.html.twig') }}
+
+    <a href="{{ path('app_p_c_index') }}" class="btn btn-secondary mt-3">back to list</a>
+{% endblock %}

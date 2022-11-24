@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}PC index{% endblock %}
+
+{% block body %}
+    <h1>PC index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Produit</th>
+                <th>Client</th>
+                <th>Num Commande</th>
+                <th>Quantité</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for p_c in p_cs %}
+            <tr>
+                <td>{{ p_c.id }}</td>
+                <td>{{ p_c.CodP }}</td>
+                <td>{{ p_c.NumC }}</td>
+                <td>{{ p_c.NumC.id }}</td>
+                <td>{{ p_c.QteC }}</td>
+                <td>
+                    <a href="{{ path('app_p_c_show', {'id': p_c.id}) }}">show</a>
+                    <a href="{{ path('app_p_c_edit', {'id': p_c.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_p_c_new') }}" class="btn btn-secondary">Create new</a>
+{% endblock %}

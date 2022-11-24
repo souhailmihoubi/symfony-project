@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Produit index{% endblock %}
+
+{% block body %}
+    <h1>produits qui ont une quantité en stock la plus basse</h1>
+
+    <table id="produit" class="table table-stripped">
+            <thead>
+                <tr>
+                    <th>Nom de Produit</th>
+                    <th>Quantity</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for produit in produits %}
+                    <tr>
+                        <td>{{produit.Nom}}</td>
+                        <td>{{produit.Quantite}}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <a href="{{path('app_client_index')}}" class="btn btn-secondary">Back to list</a>
+
+{% endblock %}

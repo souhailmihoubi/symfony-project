@@ -1,0 +1,29 @@
+{{ form_start(form) }}
+<div>
+    <label for="lib" class="form-label">
+        {{ form_label(form.lib)}}
+    </label>
+    {{ form_widget(form.lib, {'attr':{'class':'form-control mb-4'}} )}}
+</div>
+<div>
+    <label for="pu"     class="form-label">
+        {{ form_label(form.pu)}}
+    </label>
+    {{ form_widget(form.pu, {'attr':{'class':'form-control mb-4'}} )}}
+</div>
+<div>
+    <label for="quantite" class="form-label">
+        {{ form_label(form.QteS)}}
+    </label>
+    {{ form_widget(form.QteS, {'attr':{'class':'form-control mb-4'}} )}}
+</div>
+<div>
+    <label for="seuil" class="form-label">
+        {{ form_label(form.seuil)}}
+    </label>
+    {{ form_widget(form.seuil, {'attr':{'class':'form-control mb-4'}} )}}
+</div>
+
+    {{ form_widget(form) }}
+    <button class="btn btn-dark">{{ button_label|default('Save') }}</button>
+{{ form_end(form) }}

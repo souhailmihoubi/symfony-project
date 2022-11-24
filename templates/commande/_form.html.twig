@@ -1,0 +1,10 @@
+{{ form_start(form) }}
+<div>
+    <label for="CodC" class="form-label">
+        {{ form_label(form.CodC)}}
+    </label>
+    {{ form_widget(form.CodC, {'attr':{'class':'form-select mb-4'}} )}}
+</div>
+    {{ form_widget(form) }}
+    <button class="btn btn-dark" >{{ button_label|default('Save') }}</button>
+{{ form_end(form) }}
