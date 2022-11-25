@@ -7,7 +7,10 @@ use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Action;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Actions;
+use EasyCorp\Bundle\EasyAdminBundle\Field\DateTimeField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
+use EasyCorp\Bundle\EasyAdminBundle\Field\NumberField;
 
 class FactureCrudController extends AbstractCrudController
 {
@@ -22,14 +25,13 @@ class FactureCrudController extends AbstractCrudController
         ->add(Crud::PAGE_INDEX, Action::DETAIL);
     }
 
-    /*
     public function configureFields(string $pageName): iterable
     {
         return [
-            IdField::new('id'),
-            TextField::new('title'),
-            TextEditorField::new('description'),
+            yield AssociationField::new('NumC','Client'),
+            yield NumberField::new('MontF','Mantant'),
+            yield DateTimeField::new('DatF','Quantité'),
+
         ];
     }
-    */
 }

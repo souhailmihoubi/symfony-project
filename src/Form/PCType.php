@@ -15,7 +15,8 @@ class PCType extends AbstractType
         
             ->add('NumC')
             ->add('CodP')
-            ->add('QteC');
+            ->add('QteC')
+        ;
     }
 
     public function configureOptions(OptionsResolver $resolver): void
