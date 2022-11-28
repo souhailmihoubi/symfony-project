@@ -2,15 +2,18 @@
 
 namespace App\Controller;
 
+use DateTime;
 use App\Entity\Client;
 use App\Entity\Produit;
 use App\Form\VilleType;
 use App\Form\ClientType;
 use App\Form\ProduitType;
+
+use App\Entity\ClientSearch;
 use App\Entity\ProductSearch;
+use App\Form\ClientSearchType;
 use App\Form\ProductSearchType;
 use App\Repository\ClientRepository;
-use DateTime;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -47,6 +50,26 @@ class QuestionsController extends AbstractController
         return $this->render(
             'questions/q1.html.twig',
             ['form' => $form->createView(), 'clients' => $clients]
+        );
+    }
+    #[Route('/question5', name: 'question5')]
+    public function ClientCommande(Request $request, ClientRepository $repository)
+    {
+        $clientSearch = new ClientSearch();
+        $form = $this->createForm(ClientSearchType::class, $clientSearch);
+        $form->handleRequest($request);
+        $commands = [];
+        if ($form->isSubmitted() && $form->isValid()) {
+            $client = $clientSearch->getClient();
+
+            if ($client != "") {
+                $commands = $repository->getProductByClient($client->getId());
+            } else
+                $commands = $repository->findAll();
+        }
+        return $this->render(
+            'questions/q5.html.twig',
+            ['form' => $form->createView(), 'commands' => $commands]
         );
     }
 

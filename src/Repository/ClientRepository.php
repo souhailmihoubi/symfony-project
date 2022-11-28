@@ -55,6 +55,20 @@ class ClientRepository extends ServiceEntityRepository
         return $result;
     }
 
+    public function getProductByClient($id)
+    {
+        $sql = "SELECT cm.*       
+                FROM commande cm
+                INNER JOIN client c ON cm.cod_c_id = c.id
+                WHERE cm.cod_c_id = ?
+               ";
+
+        $statement = $this->_em->getConnection()->prepare($sql);
+        $statement->bindValue(1 , $id);
+        $result = $statement->executeQuery()->fetchAllAssociative();
+        return $result;
+    }
+
     public function getClientByVille($ville)
     {
         

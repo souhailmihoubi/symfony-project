@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Question 5 {% endblock %}
+
+{% block body %}
+ 
+
+    {{form_start(form)}}
+    <div class="d-flex flex-row justify-content-center align-items-left">
+    <div class="col">
+    {{form_row(form.client)}}
+    </div>
+    <div class="col">
+        <div class="form-group">
+            <button type="submit" class="btn btn-warning">Search</button>
+        </div>
+    </div>
+    </div>
+    {{form_end(form)}}    
+    {% if commands %}
+        <table id="commande" class="table table-stripped">
+            <thead>
+                <tr>
+                    <th>Id Commande</th>
+                    <th>Date Commande</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for commande in commands %}
+                    <tr>
+                        <td>{{commande.id}}</td>
+                        <td>{{commande.dat_c }}
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <a href="{{path('app_client_index')}}" class="btn btn-secondary">Back to list</a>
+    {% else %}
+        <p>N'as pas de Commandes</p>
+    {% endif %}
+{% endblock %}

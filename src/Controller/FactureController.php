@@ -27,7 +27,7 @@ class FactureController extends AbstractController
     }
 
     #[Route('/new', name: 'app_facture_new', methods: ['GET', 'POST'])]
-    public function new(Request $request, FactureRepository $factureRepository,ClientRepository $clientRepository,CommandeRepository $commandeRepository, PCRepository $pCRepository): Response
+    public function new(Request $request, FactureRepository $factureRepository, ClientRepository $clientRepository, CommandeRepository $commandeRepository, PCRepository $pCRepository): Response
     {
         $facture = new Facture();
 
@@ -35,25 +35,34 @@ class FactureController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+
+
+
+            $pc = $pCRepository->findBy(
+                ['NumC' => $facture->getNumC()]
+            );
+
+            $montant =0;
+
+            for ($i=0; $i < count($pc) ; $i++) { 
+                $quantite = $pc[$i]->getQteC();
+
+                $produit = $pc[$i]->getCodP();
+
+                $prix = $produit->getPu();
+
+                $montant += $prix * $quantite;
+
+            }
+          
             
 
-            
-            $pc = $pCRepository->find($facture->getNumC());
 
-
-            
-            $quantite = $pc->getQteC();
-            
-            $produit = $pc->getCodP();
-
-            $prix = $produit->getPu();
-
-
-            $montant = $prix * $quantite;
+           
 
             $facture->setMontF($montant);
-            
-            
+
+
             $factureRepository->save($facture, true);
             return $this->redirectToRoute('app_facture_index', [], Response::HTTP_SEE_OTHER);
         }
@@ -93,7 +102,7 @@ class FactureController extends AbstractController
     #[Route('/{id}', name: 'app_facture_delete', methods: ['POST'])]
     public function delete(Request $request, Facture $facture, FactureRepository $factureRepository): Response
     {
-        if ($this->isCsrfTokenValid('delete'.$facture->getId(), $request->request->get('_token'))) {
+        if ($this->isCsrfTokenValid('delete' . $facture->getId(), $request->request->get('_token'))) {
             $factureRepository->remove($facture, true);
         }
 
